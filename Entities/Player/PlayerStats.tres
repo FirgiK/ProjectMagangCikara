@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatResource" load_steps=2 format=3 uid="uid://7cotx0cni5qn"]
+
+[ext_resource type="Script" uid="uid://h7b8d7tia2cl" path="res://Script/StateResource.gd" id="1_26v2j"]
+
+[resource]
+script = ExtResource("1_26v2j")
+hp = 100
+atk = 10
+def = 10
+agi = 10
+metadata/_custom_type_script = "uid://h7b8d7tia2cl"
