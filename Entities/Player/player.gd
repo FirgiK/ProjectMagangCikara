@@ -67,10 +67,16 @@ func take_damage(amount: int):
 	if stats.hp <= 0:
 		print("Player Kalah!")
 		queue_free()
-
-func _on_hitbox_body_entered(body: Node2D):
-	if body.is_in_group("enemy") and body.has_method("take_damage"):
-		body.take_damage(stats.atk)
+		
+func _on_hitbox_area_entered(area: Area2D):
+	# 'area' yang masuk adalah Hurtbox milik musuh.
+	# Grup "enemy" dan skripnya ada di parent dari Hurtbox tersebut.
+	var parent_body = area.get_parent()
+	
+	if parent_body.is_in_group("enemy") and parent_body.has_method("take_damage"):
+		parent_body.take_damage(stats.atk)
+		print("Player berhasil menyerang ", parent_body.name)
+		
 
 func _on_animation_finished():
 	if current_state == State.ATTACK:

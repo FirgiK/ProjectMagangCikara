@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatResource" load_steps=2 format=3 uid="uid://ckip4o0s5mje3"]
+
+[ext_resource type="Script" uid="uid://h7b8d7tia2cl" path="res://Script/StateResource.gd" id="1_pqhdl"]
+
+[resource]
+script = ExtResource("1_pqhdl")
+level = 1
+current_exp = 0
+exp_to_next_level = 100
+hp = 10
+atk = 10
+def = 10
+agi = 10
+metadata/_custom_type_script = "uid://h7b8d7tia2cl"

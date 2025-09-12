@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6a8y1251yclc"]
+[gd_scene load_steps=5 format=3 uid="uid://c6a8y1251yclc"]
 
+[ext_resource type="Script" uid="uid://dtdhdhgn38y2n" path="res://Entities/Enemy/dummy_enemy.gd" id="1_3x721"]
 [ext_resource type="Texture2D" uid="uid://cy3t3y4sbd8kw" path="res://icon.svg" id="1_hxxyx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3x721"]
-radius = 24.1868
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x721"]
+size = Vector2(49, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t71i0"]
-size = Vector2(48, 46)
+size = Vector2(58, 53)
 
-[node name="DummyEnemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="DummyEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
+script = ExtResource("1_3x721")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -17,13 +19,14 @@ scale = Vector2(0.402344, 0.382813)
 texture = ExtResource("1_hxxyx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_3x721")
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_3x721")
+disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(35, 47)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-35, -46)
+position = Vector2(-35, -47)
 shape = SubResource("RectangleShape2D_t71i0")

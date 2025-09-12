@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djl6gwcy4adkk"]
+[gd_scene load_steps=5 format=3 uid="uid://djl6gwcy4adkk"]
 
 [ext_resource type="Script" uid="uid://dhrdxdi4en5to" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://f6e46elpfpjo" path="res://Entities/Player/Player.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c6a8y1251yclc" path="res://Entities/Enemy/dummy_enemy.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bnhianuq52pac" path="res://Entities/Enemy/orc.tscn" id="4_aqk2v"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_f3sb7")
@@ -11,5 +12,10 @@ script = ExtResource("1_f3sb7")
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 
-[node name="DummyEnemy" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(100, -5)
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="DummyEnemy" parent="Enemy" instance=ExtResource("3_tlwt5")]
+position = Vector2(301, 179)
+
+[node name="Orc" parent="Enemy" instance=ExtResource("4_aqk2v")]
+position = Vector2(363, 276)
