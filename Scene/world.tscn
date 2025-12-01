@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8cg4uktrjju1"]
+
+[ext_resource type="PackedScene" uid="uid://b2srha37fja1d" path="res://Scene/player.tscn" id="1_dlwip"]
+[ext_resource type="PackedScene" uid="uid://bmckw53txrtao" path="res://Scene/slime.tscn" id="2_ejll3"]
+[ext_resource type="PackedScene" uid="uid://bfsssqukbx010" path="res://Scene/acid_slime.tscn" id="3_ejll3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scul4"]
+size = Vector2(1167, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcvp0"]
+size = Vector2(20, 673)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -5.0
+offset_right = 1153.0
+offset_bottom = 643.0
+color = Color(0.9999973, 0.56635493, 0.2469404, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(573.5, 0)
+shape = SubResource("RectangleShape2D_scul4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(580, 653)
+shape = SubResource("RectangleShape2D_scul4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 326.5)
+shape = SubResource("RectangleShape2D_pcvp0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1160, 331)
+shape = SubResource("RectangleShape2D_pcvp0")
+
+[node name="Player" parent="." instance=ExtResource("1_dlwip")]
+position = Vector2(108, 298)
+
+[node name="Slime" parent="." instance=ExtResource("2_ejll3")]
+position = Vector2(910, 293)
+
+[node name="AcidSlime" parent="." instance=ExtResource("3_ejll3")]
+position = Vector2(858, 562)

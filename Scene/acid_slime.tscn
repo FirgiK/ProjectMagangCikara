@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfsssqukbx010"]
+
+[ext_resource type="PackedScene" uid="uid://bmckw53txrtao" path="res://Scene/slime.tscn" id="1_p0jud"]
+[ext_resource type="SpriteFrames" uid="uid://bhixvkbdn785d" path="res://tres/acid_slime.tres" id="2_n6tw5"]
+
+[node name="AcidSlime" instance=ExtResource("1_p0jud")]
+min_level = 5
+max_level = 10
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_n6tw5")
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="DeetectionArea" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackPivot/Hitbox" index="0"]
+visible = false
