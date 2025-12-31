@@ -1,0 +1,15 @@
+ID,Name,Type,Category,MaxStack,ToxicityValue,HPRestore,StaminaRestore,Description,Usage
+MAT-001,Xeno-Timber,Material,Raw,99,0,0,0,Serat batang tanaman asing yang keras.,Crafting Dinding & Alat
+MAT-002,Basalt Shard,Material,Raw,99,0,0,0,Pecahan batu vulkanik tajam.,Crafting Scalpel & Panah
+MAT-003,Scrap Metal,Material,Raw,50,0,0,0,Logam penyok sisa bangkai pesawat.,Crafting Struktur Base
+MAT-004,Fiber Vine,Material,Raw,99,0,0,0,Tanaman rambat ulet.,Crafting Tali
+BIO-001,Bio-Gel,Material,CombatDrop,50,35,-5,0,Cairan tubuh alien yang lengket.,Bahan Bakar & Lem
+BIO-002,Organic Sludge,Waste,CombatDrop,20,50,-10,0,Sisa tubuh hancur akibat ledakan.,Pupuk Kompos
+BIO-003,Fibrous Muscle,Food,CombatDrop,20,25,5,5,Jaringan otot utuh. Beracun jika mentah.,Bahan Masakan Utama
+BIO-004,Acid Gland,Component,CombatDrop,10,85,-40,0,Kantung asam korosif.,Crafting Baterai/Ammo
+BIO-005,Chitin Plate,Material,CombatDrop,50,5,0,0,Kulit keras serangga.,Crafting Armor Awal
+CON-001,Earth Ration,Consumable,Processed,10,0,20,10,Makanan kaleng sisa ekspedisi lama.,Survival Awal
+CON-002,Nutrient Paste,Consumable,Processed,20,-5,15,30,Otot alien yang sudah dimasak.,Makanan Pokok
+CON-003,Filtered Water,Consumable,Processed,10,-10,5,50,Air sungai yang sudah disaring.,Minuman Utama
+CON-004,Basic Bandage,Consumable,Processed,5,0,30,0,Perban dari serat tanaman.,Penyembuhan Luka
+CON-005,Detox Injector,Consumable,Medical,5,-50,5,0,Serum penetral racun darurat.,Menurunkan Bar Racun

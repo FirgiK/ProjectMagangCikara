@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://whkhi0mjmvu"
+
+[deps]
+
+files=["res://globalAsset/database_item/Data_item.Name.translation", "res://globalAsset/database_item/Data_item.Type.translation", "res://globalAsset/database_item/Data_item.Category.translation", "res://globalAsset/database_item/Data_item.MaxStack.translation", "res://globalAsset/database_item/Data_item.ToxicityValue.translation", "res://globalAsset/database_item/Data_item.HPRestore.translation", "res://globalAsset/database_item/Data_item.StaminaRestore.translation", "res://globalAsset/database_item/Data_item.Description.translation", "res://globalAsset/database_item/Data_item.Usage.translation"]
+
+source_file="res://globalAsset/database_item/Data_item.csv"
+dest_files=["res://globalAsset/database_item/Data_item.Name.translation", "res://globalAsset/database_item/Data_item.Type.translation", "res://globalAsset/database_item/Data_item.Category.translation", "res://globalAsset/database_item/Data_item.MaxStack.translation", "res://globalAsset/database_item/Data_item.ToxicityValue.translation", "res://globalAsset/database_item/Data_item.HPRestore.translation", "res://globalAsset/database_item/Data_item.StaminaRestore.translation", "res://globalAsset/database_item/Data_item.Description.translation", "res://globalAsset/database_item/Data_item.Usage.translation"]
+
+[params]
+
+compress=true
+delimiter=0

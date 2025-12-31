@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://02vxmaoumm4k"]
+
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="1_gx4hu"]
+[ext_resource type="Texture2D" uid="uid://tgi5hqxgnehb" path="res://globalAsset/Icons/Icon14_23.png" id="1_qvney"]
+
+[resource]
+script = ExtResource("1_gx4hu")
+name = "Plasma Cell"
+description = "give you buff of ATK by 5 in 30 Second"
+icon = ExtResource("1_qvney")
+atk_bonus = 5
+duration = 30.0
+metadata/_custom_type_script = "uid://wfd783iyurdh"

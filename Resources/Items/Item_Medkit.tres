@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cyqpwpku1qjpd"]
+
+[ext_resource type="Texture2D" uid="uid://c662ncv68dhli" path="res://globalAsset/Icons/Icon14_19.png" id="1_ncnvi"]
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="2_mu4c0"]
+
+[resource]
+script = ExtResource("2_mu4c0")
+name = "Nano Injector"
+description = "Injector  with 30HP recovery features."
+icon = ExtResource("1_ncnvi")
+heal_amount = 30
+metadata/_custom_type_script = "uid://wfd783iyurdh"

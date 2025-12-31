@@ -6,15 +6,20 @@ extends CharacterBody2D
 @export var max_level : int = 4
 
 @export_group("Base Stats (Lv 1)")
-@export var base_max_hp : int = 10
-@export var base_atk : int = 3
+@export var base_max_hp : int = 50
+@export var base_atk : int = 2
 @export var base_def : int = 0
 @export var base_exp_reward : int = 15
 
+@export_group("Loot System")
+@export var loot_table : Array[ItemData] 
+@export var drop_chance : float = 1.0    # 1.0 = 100% Drop
+
 # --- MOVEMENT SETTINGS ---
-@export var speed_wander : float = 20.0
-@export var speed_chase : float = 65.0
+@export var speed_wander : float = 15.0
+@export var speed_chase : float = 50.0
 @export var wander_radius : float = 50.0
+
 
 # --- REAL TIME STATS ---
 var level : int = 1
@@ -32,6 +37,10 @@ var target_player = null
 var wander_direction : Vector2
 var anim_suffix : String = "down"
 
+# --- Loot ---
+# PATH SUDAH DISESUAIKAN DENGAN INFO ANDA
+var loot_scene = preload("res://Scene/loot_item.tscn") 
+
 # --- NODES ---
 @onready var anim = $AnimatedSprite2D
 @onready var state_timer = $StateTimer
@@ -40,19 +49,21 @@ var anim_suffix : String = "down"
 
 func _ready():
 	y_sort_enabled = true
-	randomize()
-	initialize_level() # Hitung stats
+	# randomize() # Opsional di Godot 4
+	initialize_level() 
 	
 	home_position = global_position
 	change_state(IDLE)
 	
 	# --- KONEKSI SINYAL UTAMA ---
-	anim.animation_finished.connect(_on_animation_finished)
-	anim.frame_changed.connect(_on_frame_changed)
+	if not anim.animation_finished.is_connected(_on_animation_finished):
+		anim.animation_finished.connect(_on_animation_finished)
+		
+	# Pastikan frame_changed terhubung (untuk hitbox sync)
+	if not anim.frame_changed.is_connected(_on_frame_changed):
+		anim.frame_changed.connect(_on_frame_changed)
 	
-	# --- KONEKSI HITBOX (Targeting Hurtbox Area) ---
-	# Kita pastikan script mendengar sinyal "area_entered"
-	# Area ini adalah Hitbox Slime, mencari Hurtbox Player
+	# --- KONEKSI HITBOX ---
 	var hitbox = $AttackPivot/Hitbox
 	if !hitbox.area_entered.is_connected(_on_hitbox_area_entered):
 		hitbox.area_entered.connect(_on_hitbox_area_entered)
@@ -67,7 +78,7 @@ func initialize_level():
 	def = base_def + floor((level - 1) / 2.0)
 	exp_reward = int(base_exp_reward * pow(1.2, level - 1))
 	
-	# Visual Level Indicator (Makin merah = level tinggi)
+	# Visual Level Indicator
 	var tint = 1.0 - (level * 0.05)
 	anim.modulate = Color(1, tint, tint)
 
@@ -89,7 +100,7 @@ func _physics_process(_delta):
 				var direction = (target_player.global_position - global_position).normalized()
 				var dist = global_position.distance_to(target_player.global_position)
 				
-				# SOLUSI ANTI-LENGKET: Stop mendorong jika sudah nempel
+				# SOLUSI ANTI-LENGKET
 				if dist > 20.0: 
 					velocity = direction * speed_chase
 				else:
@@ -131,6 +142,9 @@ func change_state(new_state):
 			# Matikan fisik dan hitbox saat mati
 			$CollisionShape2D.set_deferred("disabled", true)
 			hitbox_shape.set_deferred("disabled", true)
+			
+			# DROP LOOT SAAT MATI
+			drop_loot()
 
 func perform_attack():
 	play_smart_anim("attack")
@@ -138,13 +152,12 @@ func perform_attack():
 func update_animation_direction(dir: Vector2):
 	if dir == Vector2.ZERO: return
 
-	# Prioritas Horizontal
 	if abs(dir.x) > abs(dir.y):
 		anim_suffix = "side"
 		if dir.x > 0:
-			anim.flip_h = true  # Kanan (Mirror aset kiri)
+			anim.flip_h = true 
 		else:
-			anim.flip_h = false # Kiri (Normal)
+			anim.flip_h = false
 	else:
 		if dir.y > 0: anim_suffix = "down"
 		else: anim_suffix = "up"
@@ -158,7 +171,7 @@ func play_smart_anim(base_name: String):
 # --- SINKRONISASI HITBOX ---
 func _on_frame_changed():
 	if state == ATTACK:
-		# Hitbox NYALA hanya di frame 4, 5, 6, 7
+		# Hitbox NYALA hanya di frame 4-7
 		if anim.frame >= 4 and anim.frame <= 7:
 			hitbox_shape.set_deferred("disabled", false)
 		else:
@@ -206,22 +219,16 @@ func _on_animation_finished():
 	elif state == DEATH:
 		queue_free()
 
-# --- LOGIKA SERANGAN BARU (TARGET HURTBOX) ---
+# --- HITBOX LOGIC ---
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	# Cek apakah area yang kena adalah Hurtbox milik Player?
 	if area.name == "Hurtbox":
-		var target = area.get_parent() # Naik ke node Player (CharacterBody2D)
-		
-		# Validasi target dan state
+		var target = area.get_parent() 
 		if target and state == ATTACK:
 			if target.has_method("take_damage"):
-				# Berikan damage ke Player
 				target.take_damage(atk, global_position)
-				
-				# Matikan hitbox agar 1 ayunan = 1 damage (tidak spam)
 				hitbox_shape.set_deferred("disabled", true)
 
-# --- MENERIMA DAMAGE ---
+# --- DAMAGE & EXP ---
 func take_damage(incoming_damage, attacker = null):
 	if state == DEATH: return
 	
@@ -234,3 +241,18 @@ func take_damage(incoming_damage, attacker = null):
 			attacker.gain_exp(exp_reward)
 	else:
 		change_state(HURT)
+
+# --- LOOT LOGIC ---
+func drop_loot():
+	if randf() > drop_chance: return
+	if loot_table.is_empty(): return
+	
+	var item_to_drop = loot_table.pick_random()
+	
+	if loot_scene:
+		var loot = loot_scene.instantiate()
+		loot.global_position = global_position 
+		loot.set_item(item_to_drop)
+		get_tree().current_scene.call_deferred("add_child", loot)
+	else:
+		print("ERROR: Loot Scene tidak ditemukan di path res://Scene/loot_item.tscn")

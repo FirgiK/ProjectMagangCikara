@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://blyuhrwln8jpj"]
+
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="1_0h7t8"]
+[ext_resource type="Texture2D" uid="uid://b2aqpe1xtafnd" path="res://globalAsset/Icons/Icon14_24.png" id="1_u5fpu"]
+
+[resource]
+script = ExtResource("1_0h7t8")
+name = "Nitro Fuel"
+description = "give you buff of SPD by 10 in 15 Second"
+icon = ExtResource("1_u5fpu")
+speed_bonus = 10
+duration = 15.0
+metadata/_custom_type_script = "uid://wfd783iyurdh"

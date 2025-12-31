@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://f2j0ogfo1psb"]
+
+[ext_resource type="Texture2D" uid="uid://cqjglmmwy8yot" path="res://globalAsset/Icons/Icon14_09.png" id="1_dgljw"]
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="1_pf25x"]
+
+[resource]
+script = ExtResource("1_pf25x")
+type = 5
+name = "Encrypted Data"
+description = "A quest item"
+icon = ExtResource("1_dgljw")
+stackable = false
+metadata/_custom_type_script = "uid://wfd783iyurdh"

@@ -1,0 +1,401 @@
+[gd_scene load_steps=17 format=3 uid="uid://c3d5vnlvdobrj"]
+
+[ext_resource type="Script" uid="uid://bb8mb5p2llmf6" path="res://script/gui.gd" id="1_6ah1q"]
+[ext_resource type="Texture2D" uid="uid://q6gvssu7isl7" path="res://globalAsset/IconMenu/Cyan/MainPanelCyan.png" id="2_hquae"]
+[ext_resource type="FontFile" uid="uid://bj5blimgw67bw" path="res://globalAsset/Fonts/Fonts/Kenney Blocks.ttf" id="3_100tx"]
+[ext_resource type="Texture2D" uid="uid://cyo56dkpe0cda" path="res://globalAsset/IconMenu/Cyan/BarCyan.png" id="3_jocca"]
+[ext_resource type="Texture2D" uid="uid://cbfp27wlbj1jo" path="res://globalAsset/IconMenu/Cyan/BqBarCyan.png" id="3_w0klp"]
+[ext_resource type="FontFile" uid="uid://bbfk3mes1cqvy" path="res://globalAsset/Fonts/Fonts/Kenney Mini.ttf" id="4_evc08"]
+[ext_resource type="Texture2D" uid="uid://btmdflsm1phj" path="res://globalAsset/IconMenu/Cyan/BtnCyan.png" id="4_w0klp"]
+[ext_resource type="Script" uid="uid://clw50cbmcwvse" path="res://Scene/name_label.gd" id="5_evc08"]
+[ext_resource type="FontFile" uid="uid://dvomfkopmbxby" path="res://globalAsset/Fonts/Fonts/Kenney Pixel.ttf" id="8_cey5p"]
+
+[sub_resource type="Gradient" id="Gradient_hquae"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4p6jq"]
+gradient = SubResource("Gradient_hquae")
+width = 100
+height = 10
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_jocca"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w0klp"]
+gradient = SubResource("Gradient_jocca")
+width = 100
+height = 10
+
+[sub_resource type="SystemFont" id="SystemFont_kv6r3"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_100tx"]
+font = ExtResource("8_cey5p")
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqtv2"]
+font = ExtResource("3_100tx")
+font_color = Color(0, 0, 0, 1)
+
+[node name="GUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_6ah1q")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 5.0
+offset_right = 73.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0337678, 0.85972005)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 130.0
+offset_bottom = 108.0
+scale = Vector2(1.9941816, 2.4393828)
+
+[node name="HPBar" type="TextureProgressBar" parent="HUD/VBoxContainer"]
+layout_mode = 2
+value = 80.0
+texture_under = SubResource("GradientTexture2D_4p6jq")
+texture_progress = SubResource("GradientTexture2D_w0klp")
+
+[node name="NumberLabel" type="Label" parent="HUD/VBoxContainer/HPBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
+grow_horizontal = 2
+scale = Vector2(1.1663435, 0.55999994)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_kv6r3")
+theme_override_font_sizes/font_size = 12
+text = "100/100"
+label_settings = SubResource("LabelSettings_100tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.0
+offset_top = -244.0
+offset_right = 54.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6672542, 1.7048252)
+size_flags_horizontal = 4
+
+[node name="Background" type="NinePatchRect" parent="StatsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hquae")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99700004
+anchor_bottom = 0.99300003
+offset_left = 2.0
+offset_top = 5.0
+offset_right = -1.8000183
+offset_bottom = 1.0999756
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsMenu/Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 31
+
+[node name="LeftCol" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AvatarFrame" type="NinePatchRect" parent="StatsMenu/Background/MarginContainer/HBoxContainer/LeftCol"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+patch_margin_top = 4
+patch_margin_bottom = 210
+
+[node name="AvatarImage" type="TextureRect" parent="StatsMenu/Background/MarginContainer/HBoxContainer/LeftCol/AvatarFrame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.0050000004
+anchor_right = 0.984
+anchor_bottom = 0.95300007
+offset_left = -102.76388
+offset_top = -41.45512
+offset_right = -102.723885
+offset_bottom = -41.302124
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/LeftCol"]
+custom_minimum_size = Vector2(0, -50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "arip aja"
+label_settings = SubResource("LabelSettings_fqtv2")
+autowrap_trim_flags = 64
+script = ExtResource("5_evc08")
+
+[node name="RightCol" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TitleStats" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_100tx")
+text = "Base Stats"
+horizontal_alignment = 1
+
+[node name="GridStats" type="GridContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Lbl_HP" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/GridStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Hp : "
+
+[node name="Lbl_Atk" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/GridStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Atk : "
+
+[node name="Lbl_Def" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/GridStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Def : "
+
+[node name="Lbl_Spd" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/GridStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Spd : "
+
+[node name="HSeparator" type="HSeparator" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleProf" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("3_100tx")
+text = "Proficiency"
+
+[node name="ProficiencyBox" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="BoxAth" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LabelAth" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxAth"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Athletics"
+
+[node name="BarAth" type="TextureProgressBar" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxAth"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 0
+value = 10.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_w0klp")
+texture_over = ExtResource("3_jocca")
+texture_progress = ExtResource("4_w0klp")
+tint_over = Color(0.052207872, 0.9227597, 0.84391004, 1)
+tint_progress = Color(0.2, 1, 0.23921569, 1)
+
+[node name="NumberLabel" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxAth/BarAth"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.1663435, 0.5472727)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_cey5p")
+label_settings = SubResource("LabelSettings_100tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxSurv" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LabelSurv" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxSurv"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Survival"
+
+[node name="BarSurv" type="TextureProgressBar" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxSurv"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 0
+value = 10.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_w0klp")
+texture_over = ExtResource("3_jocca")
+texture_progress = ExtResource("4_w0klp")
+tint_over = Color(0, 1, 1, 1)
+
+[node name="NumberLabel" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxSurv/BarSurv"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.1663435, 0.55370784)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_cey5p")
+label_settings = SubResource("LabelSettings_100tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxComb" type="VBoxContainer" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LabelComb" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxComb"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_evc08")
+text = "Combat"
+
+[node name="BarComb" type="TextureProgressBar" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxComb"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 0
+min_value = 50.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 6
+stretch_margin_right = 6
+stretch_margin_bottom = 6
+texture_under = ExtResource("3_w0klp")
+texture_over = ExtResource("3_jocca")
+texture_progress = ExtResource("4_w0klp")
+tint_over = Color(1.540184e-06, 0.89891416, 0.94143677, 1)
+
+[node name="NumberLabel" type="Label" parent="StatsMenu/Background/MarginContainer/HBoxContainer/RightCol/ProficiencyBox/BoxComb/BarComb"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.1663435, 0.5558208)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_cey5p")
+label_settings = SubResource("LabelSettings_100tx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryDock" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.117
+anchor_bottom = 0.915
+offset_right = 80.0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="Panel" parent="InventoryDock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryDock"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.02
+anchor_right = 0.85
+anchor_bottom = 0.98
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ItemGrid" type="GridContainer" parent="InventoryDock/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+initial_position = 4
+item_count = 3
+item_0/text = "Use"
+item_0/id = 0
+item_1/text = "Drop"
+item_1/id = 1
+item_2/text = "Destroy"
+item_2/id = 2

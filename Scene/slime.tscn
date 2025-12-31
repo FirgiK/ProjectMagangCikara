@@ -1,12 +1,18 @@
-[gd_scene load_steps=134 format=3 uid="uid://bmckw53txrtao"]
+[gd_scene load_steps=140 format=3 uid="uid://bmckw53txrtao"]
 
 [ext_resource type="Script" uid="uid://stnrqh2c0yds" path="res://script/slime.gd" id="1_b26q4"]
 [ext_resource type="Texture2D" uid="uid://krhfbul2ocpd" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Attack_with_shadow.png" id="1_byv4y"]
 [ext_resource type="Texture2D" uid="uid://c437lamenirmx" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Death_with_shadow.png" id="2_b26q4"]
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="2_bi7q7"]
 [ext_resource type="Texture2D" uid="uid://bfyn3x0dcgmxa" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Hurt_with_shadow.png" id="3_sg7cw"]
+[ext_resource type="Resource" uid="uid://cyqpwpku1qjpd" path="res://Resources/Items/Item_Medkit.tres" id="3_yryro"]
 [ext_resource type="Texture2D" uid="uid://vtj25fhcvfwv" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Idle_with_shadow.png" id="4_bi7q7"]
+[ext_resource type="Resource" uid="uid://02vxmaoumm4k" path="res://Resources/Items/Item_Atk.tres" id="4_i3pex"]
+[ext_resource type="Resource" uid="uid://di2ky7ltstbjb" path="res://Resources/Items/Item_Def.tres" id="5_ui3nu"]
 [ext_resource type="Texture2D" uid="uid://e38jaodtp64w" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Run_with_shadow.png" id="5_yryro"]
+[ext_resource type="Resource" uid="uid://blyuhrwln8jpj" path="res://Resources/Items/Item_Spd.tres" id="6_c4ud3"]
 [ext_resource type="Texture2D" uid="uid://b8rrxo7nj00w8" path="res://globalAsset/Enemy/slime/PNG/Slime1/With_shadow/Slime1_Walk_with_shadow.png" id="6_qmyxk"]
+[ext_resource type="Resource" uid="uid://bjw5hp1sjv2su" path="res://Resources/Items/Item_Trash.tres" id="7_ocyg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jydky"]
 atlas = ExtResource("1_byv4y")
@@ -962,6 +968,8 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_b26q4")
+base_atk = 10
+loot_table = Array[ExtResource("2_bi7q7")]([ExtResource("3_yryro"), ExtResource("4_i3pex"), ExtResource("5_ui3nu"), ExtResource("6_c4ud3"), ExtResource("7_ocyg7")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.4462891, 1.5615233)

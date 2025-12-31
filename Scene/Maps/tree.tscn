@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxi57d3t4e6o3"]
+
+[ext_resource type="Texture2D" uid="uid://c0ewppu6ltt8h" path="res://globalAsset/surface/Oval_leaf_tree3.png" id="1_u3nts"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3nts"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obo8p"]
+size = Vector2(22, 8)
+
+[node name="tree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.14117648, 1, 1)
+position = Vector2(-6, -24)
+scale = Vector2(4.25, 5.125)
+texture = ExtResource("1_u3nts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 13)
+shape = SubResource("CapsuleShape2D_u3nts")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 4)
+shape = SubResource("RectangleShape2D_obo8p")

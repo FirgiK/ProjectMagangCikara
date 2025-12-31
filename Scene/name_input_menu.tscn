@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpn0v14pp4gmi"]
+
+[ext_resource type="Script" uid="uid://c1g830yjwvhnq" path="res://script/name_input.gd" id="1_8qr0o"]
+[ext_resource type="FontFile" uid="uid://dqeetnfk7pri4" path="res://globalAsset/Fonts/Fonts/Kenney Mini Square.ttf" id="1_fg77o"]
+[ext_resource type="FontFile" uid="uid://cdqaqjds0sf4q" path="res://globalAsset/Fonts/Fonts/Kenney Future Narrow.ttf" id="2_8qr0o"]
+[ext_resource type="FontFile" uid="uid://bj5blimgw67bw" path="res://globalAsset/Fonts/Fonts/Kenney Blocks.ttf" id="3_eipny"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqydv"]
+font = ExtResource("1_fg77o")
+
+[node name="NameInputMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qr0o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.014154809, 0.3245773, 0.16275421, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Enter The Comrade Name"
+label_settings = SubResource("LabelSettings_qqydv")
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8qr0o")
+placeholder_text = "Input NAme"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_eipny")
+text = "Enter"

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8mhlai1fpqgy"]
+
+[ext_resource type="Texture2D" uid="uid://b2gdhk735cec2" path="res://globalAsset/surface/Black_mushrooms1_ground_shadow.png" id="1_nmxl5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpis3"]
+radius = 11.0
+height = 24.0
+
+[node name="Tree2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(1, -20)
+scale = Vector2(2.53125, 2.390625)
+texture = ExtResource("1_nmxl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 20)
+shape = SubResource("CapsuleShape2D_bpis3")

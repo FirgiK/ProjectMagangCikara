@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8cg4uktrjju1"]
+[gd_scene load_steps=8 format=3 uid="uid://c8cg4uktrjju1"]
 
 [ext_resource type="PackedScene" uid="uid://b2srha37fja1d" path="res://Scene/player.tscn" id="1_dlwip"]
 [ext_resource type="PackedScene" uid="uid://bmckw53txrtao" path="res://Scene/slime.tscn" id="2_ejll3"]
 [ext_resource type="PackedScene" uid="uid://bfsssqukbx010" path="res://Scene/acid_slime.tscn" id="3_ejll3"]
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="4_scul4"]
+[ext_resource type="Script" uid="uid://gj54orrbygqa" path="res://script/Spawner.gd" id="5_pcvp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scul4"]
 size = Vector2(1167, 20)
@@ -45,3 +47,12 @@ position = Vector2(910, 293)
 
 [node name="AcidSlime" parent="." instance=ExtResource("3_ejll3")]
 position = Vector2(858, 562)
+min_level = 1
+max_level = 4
+loot_table = Array[ExtResource("4_scul4")]([])
+
+[node name="SlimeSpawner" type="Node2D" parent="."]
+position = Vector2(945, 208)
+script = ExtResource("5_pcvp0")
+enemy_scene = ExtResource("2_ejll3")
+max_enemies = 8

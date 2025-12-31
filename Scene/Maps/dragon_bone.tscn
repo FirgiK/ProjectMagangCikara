@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://1tw6ni4r2bmx"]
+
+[ext_resource type="Texture2D" uid="uid://btqwrmsnaqag5" path="res://globalAsset/surface/Dragon_bones_body_ground_shadow.png" id="1_s332f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo8cu"]
+size = Vector2(148.5, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f17op"]
+radius = 14.0
+
+[node name="DragonBone" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.7254902, 0.63529414, 1)
+position = Vector2(-27, 3)
+scale = Vector2(1.6875, 1.4453125)
+texture = ExtResource("1_s332f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-18, 5)
+shape = SubResource("RectangleShape2D_oo8cu")
+debug_color = Color(0.9900182, 0, 0.28908348, 0.41960785)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-107, 10)
+shape = SubResource("CircleShape2D_f17op")
+debug_color = Color(1, 0.58431375, 0.75686276, 0.41960785)
+metadata/_edit_group_ = true

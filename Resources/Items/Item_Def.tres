@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://di2ky7ltstbjb"]
+
+[ext_resource type="Texture2D" uid="uid://ci28m4p06yfda" path="res://globalAsset/Icons/Icon14_40.png" id="1_liilk"]
+[ext_resource type="Script" uid="uid://wfd783iyurdh" path="res://script/Itemdata.gd" id="1_w76w8"]
+
+[resource]
+script = ExtResource("1_w76w8")
+name = "Hardlight Chip"
+description = "give you buff of DEF by 3 in 30 Second"
+icon = ExtResource("1_liilk")
+def_bonus = 3
+duration = 30.0
+metadata/_custom_type_script = "uid://wfd783iyurdh"

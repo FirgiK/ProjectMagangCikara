@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://b2srha37fja1d"]
+[gd_scene load_steps=101 format=3 uid="uid://b2srha37fja1d"]
 
 [ext_resource type="Texture2D" uid="uid://cx04psv3gm4m3" path="res://globalAsset/Player/attack_with_shadow.png" id="1_ivevv"]
 [ext_resource type="Texture2D" uid="uid://c14107sxan17t" path="res://globalAsset/Player/Idle_with_shadow.png" id="1_kelma"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://lega38j5r8af" path="res://globalAsset/Player/Death_with_shadow.png" id="2_r6jsd"]
 [ext_resource type="Texture2D" uid="uid://dgu81wi138qvy" path="res://globalAsset/Player/Hurt_with_shadow.png" id="3_p6qlh"]
 [ext_resource type="Texture2D" uid="uid://cw1mbwhbso3bn" path="res://globalAsset/Player/Run_with_shadow.png" id="5_2sw5t"]
+[ext_resource type="PackedScene" uid="uid://c3d5vnlvdobrj" path="res://Scene/gui.tscn" id="8_2sw5t"]
+[ext_resource type="Script" uid="uid://c3vxsf47oc1c4" path="res://script/Inventory.gd" id="9_ij4jb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ij4jb"]
 atlas = ExtResource("1_ivevv")
@@ -733,3 +735,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_p6qlh")
 debug_color = Color(0.9375294, 0.20244288, 0.38482648, 0.41960785)
+
+[node name="GUI" parent="." instance=ExtResource("8_2sw5t")]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("9_ij4jb")
